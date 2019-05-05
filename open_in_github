@@ -1,0 +1,11 @@
+#!/bin/bash
+giturl=$(echo `git config --get remote.origin.url`)
+echo $giturl
+if [[ $giturl == http* ]]
+then
+  open $giturl
+else
+  myurl=$(echo $giturl | cut -d ":" -f2)
+  echo $myurl
+  open http://github.com/$myurl
+fi
